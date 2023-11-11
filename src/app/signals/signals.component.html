@@ -1,0 +1,24 @@
+<div class="signals">
+  <h2>Writable signals</h2>
+  <div class="signals__block">
+    <button (click)="updateCount()" class="btn">
+      incetement
+    </button>
+    count: {{count()}}
+  </div>
+
+  <h2>Computed signals</h2>
+  <div class="signals__block">
+    <div>
+      doubleCount: {{doubleCount()}}
+    </div>
+    <div>
+      Conditional count: {{conditionalCount()}}
+    </div>
+  </div>
+  <h2>Effects</h2>
+  <div class="signals__block">
+    <p>Effects always run at least once. When an effect runs, it tracks any signal value reads. Whenever any of these
+      signal values change, the effect runs again. Example of usage: logging data, performing custom rendering etc.</p>
+  </div>
+</div>
