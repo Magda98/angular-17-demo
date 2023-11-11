@@ -1,0 +1,25 @@
+.deferrable-views {
+  width: 50%;
+  margin: auto;
+}
+
+.deferrable-views__block {
+  margin: 16px 0 32px;
+  gap: 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+
+.placeholder {
+  height: 469px;
+  background-color: var(--gray-100);
+  border-radius: 8px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}

@@ -1,0 +1,45 @@
+<div class="deferrable-views">
+  <!-- placeholder -->
+  <h2>&commat;defer block, &commat;placeholder</h2>
+  <div class="deferrable-views__block">
+    @defer {
+    <app-markdown />
+    } @placeholder (minimum 500ms) {
+    <div class="placeholder">Placeholder content</div>
+    }
+  </div>
+  <!-- loading, error-->
+  <h2>&commat;loading, &commat;error</h2>
+  <div class="deferrable-views__block">
+    @defer() {
+    <app-markdown />
+    } @loading (after 100ms; minimum 1s) {
+    <div>Loading...</div>
+    }@error {
+    <p>Failed to load component</p>
+    }
+  </div>
+
+  <h2>Triggers on: viewport, timer, interaction</h2>
+  <div class="deferrable-views__block">
+    @defer(on viewport) {
+    <app-markdown />
+    } @placeholder (minimum 500ms) {
+    <div class="placeholder">Placeholder content</div>
+    }
+  </div>
+  <div class="deferrable-views__block">
+    @defer(on timer(5s)) {
+    <app-markdown />
+    } @placeholder (minimum 500ms) {
+    <div class="placeholder">Placeholder content</div>
+    }
+  </div>
+  <div class="deferrable-views__block">
+    @defer(on interaction) {
+    <app-markdown />
+    } @placeholder (minimum 500ms) {
+    <div class="placeholder">Placeholder content</div>
+    }
+  </div>
+</div>
