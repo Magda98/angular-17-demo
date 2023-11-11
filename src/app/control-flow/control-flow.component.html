@@ -1,0 +1,84 @@
+<div class="control-flow">
+  <!-- if block -->
+  <h2>&commat;if block</h2>
+  <div class="control-flow__block control-flow__block--first">
+    <button (click)="toggleText.set(!toggleText())" class="btn">
+      toggle!
+    </button>
+    <div>
+      <span>
+        text:
+        @if(toggleText()){
+        <span>
+          highly classified text 🤐.
+        </span>
+        }
+        @if(!toggleText()){
+        ...
+        }
+      </span>
+    </div>
+  </div>
+  <!-- else block -->
+  <h2>&commat;else block</h2>
+  <div class="control-flow__block control-flow__block--first">
+    <button (click)="toggleElseBlockText.set(!toggleElseBlockText())" class="btn">
+      toggle!
+    </button>
+    <div>
+      <span>
+        text:
+        @if(toggleElseBlockText()){
+        <span>
+          highly classified text 🤐.
+        </span>
+        }@else{
+        <span>
+          You are not authorized.
+        </span>
+        }
+      </span>
+    </div>
+  </div>
+  <!-- for block -->
+  <h2>&commat;for block</h2>
+  <div class="control-flow__block">
+    @for(employee of employees(); track employee.id){
+    <div class="control-flow__block-employee">
+      <div>
+        {{employee.name}}
+      </div>
+      <div>
+        {{employee.country}}
+      </div>
+      <div style="text-align: center;">
+        {{employee.experience}}
+      </div>
+      <div>
+        <button (click)="removeEmplyee(employee.id)" class="btn btn--text">
+          remove
+        </button>
+      </div>
+    </div>
+    }
+  </div>
+  <h2>&commat;for block with async pipe</h2>
+  <div class="control-flow__block">
+    @for(pearson of (swapiData | async)?.results; track pearson.id){
+    <div class="control-flow__block-employee">
+      <div>
+        {{pearson.name}}
+      </div>
+      <div>
+        {{pearson.hair_color}}
+      </div>
+      <div>
+        {{pearson.eye_color}}
+      </div>
+      <div style="text-align: center;">
+        {{pearson.birth_year}}
+      </div>
+    </div>
+    }
+  </div>
+</div>

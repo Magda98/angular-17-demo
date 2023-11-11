@@ -1,0 +1,32 @@
+.control-flow__block {
+  margin: 16px 0 32px;
+  gap: 16px;
+  width: 100%;
+
+  &--first {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    align-items: center;
+  }
+}
+
+.control-flow__block-employee {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 1fr;
+  margin: 4px 0;
+  gap: 8px;
+
+  &>div:nth-child(2n+1) {
+    background: color-mix(in srgb, var(--pill-accent) 5%, transparent);
+  }
+
+  &>div:nth-child(2n) {
+    background: color-mix(in srgb, var(--electric-violet) 5%, transparent);
+  }
+}
+
+.control-flow {
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 32px;
+}
