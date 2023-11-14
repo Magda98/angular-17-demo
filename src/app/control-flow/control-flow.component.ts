@@ -1,7 +1,14 @@
 import { CommonModule, NgFor } from '@angular/common';
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  inject,
+  signal,
+} from '@angular/core';
 import { PagedResults, People } from '../models';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-control-flow',
@@ -10,8 +17,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgFor, HttpClientModule, CommonModule],
+  providers: [StorageService],
 })
-export class ControlFlowComponent {
+export class ControlFlowComponent implements OnInit {
   toggleText = signal(false);
   toggleElseBlockText = signal(false);
 
@@ -53,9 +61,13 @@ export class ControlFlowComponent {
       employees.filter((employee) => employee.id !== id)
     );
   }
-
+  private httpClient = inject(HttpClient);
+  private storageService = inject(StorageService);
   swapiData = this.httpClient.get<PagedResults<People>>(
     'https://swapi.dev/api/people'
   );
-  constructor(private httpClient: HttpClient) {}
+
+  ngOnInit(): void {
+    this.storageService.setData('employees', this.employees());
+  }
 }
